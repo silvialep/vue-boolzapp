@@ -57,13 +57,24 @@
 
             <section id="message-section" :class="empty == true ? 'empty' : 'filled-message'">
                 <div id="message-nav" :style="{display: empty ? 'none' : 'flex'}">
-
+                    <div id="message-contact">
+                        <img :src="contacts[activeMessage].avatar" alt="contact image" class="contact-image">
+                        <div id="message-name">{{contacts[activeMessage].name}}<br><span>Ultimo accesso oggi alle 12:00</span></div>
+                    </div>
+                    <div id="message-icons">
+                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <a href="#"><i class="fa-solid fa-paperclip"></i></a>
+                        <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    </div>
                 </div>
                 <div id="message-body" :style="{display: empty ? 'none' : 'flex'}">
 
                 </div>
                 <div id="message-bar" :style="{display: empty ? 'none' : 'flex'}">
-
+                    <a href="#"><i class="fa-regular fa-face-smile"></i></a>
+                    <input type="text" class="message-input" placeholder="Scrivi un messaggio">
+                    <a href="#"><i class="fa-solid fa-microphone"></i></a>
+                    
                 </div>
             </section>
 

@@ -174,7 +174,7 @@ createApp({
             },
 
             empty: true,
-            activeMessage: null,
+            activeMessage: 0,
             
         }
     },

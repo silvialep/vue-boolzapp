@@ -163,6 +163,13 @@ main {
     border-bottom: 1px solid rgb(233, 237, 239);
 }
 
+/* per ora l'hover lo gestisco così ma vorrei riuscire a farlo in vue */
+#user-contacts-messages:hover {
+    background-color: rgb(245, 246, 246);
+    cursor:pointer;
+}
+
+
 .contact-image {
     border-radius: 50%;
     padding: 5px;
@@ -192,7 +199,66 @@ main {
     background-color: rgb(233, 235, 235);
 }
 
+#message-section i {
+    font-size: 1.3rem;
+    color: rgb(177, 177, 177);
+}
+
 #message-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     height: 60px;
     background-color: rgb(234, 234, 234);
+    padding: 2px;
+}
+
+#message-contact {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    height: 100%;
+}
+
+#message-name {
+    align-self: center;
+}
+
+#message-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+#message-contact .contact-image img {
+    height: 100%;
+}
+
+#message-name span {
+    font-size: 0.8rem;
+    color: rgb(195, 201, 220);
+}
+
+#message-bar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    bottom: 0;
+    width: calc(100% - 400px);
+    height: 60px;
+    background-color: rgb(243, 238, 234);
+    padding: 30px;
+}
+
+#message-bar i {
+    color: rgb(107, 115, 118);
+}
+.message-input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 0.8rem;
 }
