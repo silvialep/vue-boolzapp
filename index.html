@@ -20,11 +20,41 @@
     <main>
         <div id="app" class="container">
             <nav id="side-bar">
+                <div id="nav-header">
+                    <div id="nav-user">
+                        <a href="#"><img :src="currentUser.avatar" alt="user image"></a>
+                        <span>{{currentUser.name}}</span>
+                    </div>
+                    <div id="nav-icons">
+                        <a href="#"><i class="fa-solid fa-people-group"></i></a>
+                        <a href="#"><i class="fa-solid fa-circle-notch"></i></a>
+                        <a href="#"><i class="fa-solid fa-message"></i></a>
+                        <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    </div>
+                </div>
+                <div id="nav-notifications">
+                    <i class="fa-solid fa-bell-slash"></i>
+                    <div id="nav-notif-links">
+                        <span>Ricevi notifiche di nuovi messaggi</span>
+                        <span><a href="#">Attiva notifiche desktop</a></span>
+                    </div>
+                </div>
+                <div id="nav-search-bar-cont">
+                    <div id="search-bar">
+                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                </div>
+                <div id="user-contacts" v-for="contact in contacts">
+                    <div id="user-contacts-messages">
+
+                    </div>
+                </div>
 
             </nav>
 
             <section id="message-section">
-                
+
             </section>
     
     

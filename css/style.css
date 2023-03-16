@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+
 header {
     height: 100px;
     background-color: rgb(0, 150, 136);
@@ -17,11 +22,11 @@ main {
 
 .container {
     position: absolute;
-    top: -50px;
+    top: -80px;
     left: 50%;
     transform: translateX(-50%);
     width: 1200px;
-    height: 700px;
+    height: 750px;
     background-color: rgb(243, 238, 234);
 }
 
@@ -34,6 +39,116 @@ main {
 }
 
 #message-section {
+    position: absolute;
+    right: 0;
+    width: calc(100% - 400px);
     height: 100%;
-    background-image: url(../img/mine.jpg);
+    background-image: url(../img/img_real.png);
+    background-position: center;
+    background-size: cover;
+}
+
+#nav-header {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    padding: 8px;
+}
+
+#nav-user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 40%;
+}
+
+#nav-user a {
+    height: 100%;
+    width: 30%;
+}
+
+#nav-user a img {
+    height: 100%;
+    border-radius: 50%;
+}
+
+#nav-header i {
+    font-size: 1.3rem;
+    color: rgb(177, 177, 177);
+}
+
+#nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding-right: 20px;
+}
+
+#nav-notifications {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 70px;
+    background-color: rgb(142, 218, 252);
+    padding: 8px;
+}
+
+#nav-notifications i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: rgb(142, 218, 252);
+}
+
+#nav-notif-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.8rem;
+}
+
+#nav-notif-links a {
+    font-size: 0.7rem;
+    color: rgb(83, 123, 142);
+}
+
+#nav-search-bar-cont {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background-color: rgb(250, 250, 250);
+    padding: 8px;
+}
+
+#search-bar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+#search-bar input {
+    width: 250px;
+    border: none;
+    font-size: 0.7rem;
+}
+
+#search-bar i {
+    color: rgb(177, 177, 177);
+}
+
+#user-contacts {
+    background-color: white;
+}
+
+#user-contacts-messages {
+    height: 70px;
+    border: 1px solid black;
 }

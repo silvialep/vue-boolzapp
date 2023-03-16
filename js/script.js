@@ -181,7 +181,8 @@ createApp({
     methods: {
         prova() {
             console.log(this.contacts);
-        }
+        },
+        
     },
 
     mounted() {
