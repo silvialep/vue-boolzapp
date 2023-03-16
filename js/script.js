@@ -165,8 +165,27 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
 
+            currentUser: {
+                name: 'Silvia',
+                avatar: './img/admin.png',
+                visible: true
+            },
+
+            
         }
+    },
+
+
+    methods: {
+        prova() {
+            console.log(this.contacts);
+        }
+    },
+
+    mounted() {
+        this.prova();
     }
+
 }).mount('#app')
