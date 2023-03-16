@@ -21,8 +21,8 @@ main {
 }
 
 .container {
-    position: absolute;
-    top: -80px;
+    position: fixed;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 1200px;
@@ -30,19 +30,24 @@ main {
     background-color: rgb(243, 238, 234);
 }
 
+
 #side-bar {
     position: absolute;
     left: 0;
     width: 400px;
     height: 100%;
-    background-color: rgb(234, 234, 234);
+    background-color: white;
 }
 
 #message-section {
     position: absolute;
+    top: 0;
     right: 0;
     width: calc(100% - 400px);
     height: 100%;
+}
+
+.empty {
     background-image: url(../img/img_real.png);
     background-position: center;
     background-size: cover;
@@ -53,6 +58,7 @@ main {
     justify-content: space-between;
     height: 60px;
     padding: 8px;
+    background-color: rgb(234, 234, 234);
 }
 
 #nav-user {
@@ -129,6 +135,7 @@ main {
     display: flex;
     align-items: center;
     gap: 30px;
+    width: 380px;
     background-color: white;
     border-radius: 5px;
     padding: 8px;
@@ -144,9 +151,6 @@ main {
     color: rgb(177, 177, 177);
 }
 
-#user-contacts {
-    background-color: white;
-}
 
 #user-contacts-messages {
     height: 70px;
