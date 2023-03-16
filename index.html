@@ -68,7 +68,9 @@
                     </div>
                 </div>
                 <div id="message-body" :style="{display: empty ? 'none' : 'flex'}">
-
+                    <ul id="message-list">
+                        <li v-for="item in contacts[activeMessage].messages" class="single-message" :class="item.status == 'sent' ? 'message-sent' : ''">{{item.message}}</li>
+                    </ul>
                 </div>
                 <div id="message-bar" :style="{display: empty ? 'none' : 'flex'}">
                     <a href="#"><i class="fa-regular fa-face-smile"></i></a>

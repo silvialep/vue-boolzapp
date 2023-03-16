@@ -199,10 +199,20 @@ main {
     background-color: rgb(233, 235, 235);
 }
 
+
+
+
+
+/* ______sezione centrale________ */
+
 #message-section i {
     font-size: 1.3rem;
     color: rgb(177, 177, 177);
 }
+
+
+
+/* ____barra superiore____ */
 
 #message-nav {
     display: flex;
@@ -240,6 +250,47 @@ main {
     font-size: 0.8rem;
     color: rgb(195, 201, 220);
 }
+
+
+/* ____corpo del messaggio____ */
+
+#message-body {
+    height: calc(100% - 120px);
+}
+
+#message-list {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    gap: 10px;
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+    padding: 20px 100px;
+    font-size: 0.8rem;
+}
+
+.single-message {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 0 10px;
+}
+
+.message-sent {
+    align-self: flex-end;
+    background-color: rgb(213, 249, 186);
+}
+
+
+
+
+
+
+/* _____barra in basso_______ */
 
 #message-bar {
     position: fixed;
