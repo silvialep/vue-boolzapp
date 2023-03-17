@@ -14,77 +14,80 @@
 </head>
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <header>
-
-    </header>
-    <main>
-        <div id="app" class="container">
-            <nav id="side-bar">
-                <div id="nav-header">
-                    <div id="nav-user">
-                        <a href="#"><img :src="currentUser.avatar" alt="user image"></a>
-                        <span>{{currentUser.name}}</span>
+    <div id="app">
+        <header>
+    
+        </header>
+        <main>
+            <div class="container">
+                <nav id="side-bar">
+                    <div id="nav-header">
+                        <div id="nav-user">
+                            <a href="#"><img :src="currentUser.avatar" alt="user image"></a>
+                            <span>{{currentUser.name}}</span>
+                        </div>
+                        <div id="nav-icons">
+                            <a href="#"><i class="fa-solid fa-people-group"></i></a>
+                            <a href="#"><i class="fa-solid fa-circle-notch"></i></a>
+                            <a href="#"><i class="fa-solid fa-message"></i></a>
+                            <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                        </div>
                     </div>
-                    <div id="nav-icons">
-                        <a href="#"><i class="fa-solid fa-people-group"></i></a>
-                        <a href="#"><i class="fa-solid fa-circle-notch"></i></a>
-                        <a href="#"><i class="fa-solid fa-message"></i></a>
-                        <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    <div id="nav-notifications">
+                        <i class="fa-solid fa-bell-slash"></i>
+                        <div id="nav-notif-links">
+                            <span>Ricevi notifiche di nuovi messaggi</span>
+                            <span><a href="#">Attiva notifiche desktop</a></span>
+                        </div>
                     </div>
-                </div>
-                <div id="nav-notifications">
-                    <i class="fa-solid fa-bell-slash"></i>
-                    <div id="nav-notif-links">
-                        <span>Ricevi notifiche di nuovi messaggi</span>
-                        <span><a href="#">Attiva notifiche desktop</a></span>
+                    <div id="nav-search-bar-cont">
+                        <div id="search-bar">
+                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        </div>
                     </div>
-                </div>
-                <div id="nav-search-bar-cont">
-                    <div id="search-bar">
-                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <div id="user-contacts">
+                        <div id="user-contacts-messages" v-for="(contact, index) in contacts" @click="activeMessage = index, empty = false" :class="activeMessage == index ? 'active' : ''">
+                            <img :src="contacts[index].avatar" alt="contact image" class="contact-image">
+                            <div id="contact-name">{{contacts[index].name}}<br><span>Ultimo messaggio inviato</span></div>
+                            <div id="contact-last-message">12:00</div>
+                        </div>
                     </div>
-                </div>
-                <div id="user-contacts">
-                    <div id="user-contacts-messages" v-for="(contact, index) in contacts" @click="activeMessage = index, empty = false" :class="activeMessage == index ? 'active' : ''">
-                        <img :src="contacts[index].avatar" alt="contact image" class="contact-image">
-                        <div id="contact-name">{{contacts[index].name}}<br><span>Ultimo messaggio inviato</span></div>
-                        <div id="contact-last-message">12:00</div>
+    
+                </nav>
+    
+                <section id="message-section" :class="empty == true ? 'empty' : 'filled-message'">
+                    <div id="message-nav" :style="{display: empty ? 'none' : 'flex'}">
+                        <div id="message-contact">
+                            <img :src="contacts[activeMessage].avatar" alt="contact image" class="contact-image">
+                            <div id="message-name">{{contacts[activeMessage].name}}<br><span>Ultimo accesso oggi alle 12:00</span></div>
+                        </div>
+                        <div id="message-icons">
+                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                            <a href="#"><i class="fa-solid fa-paperclip"></i></a>
+                            <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                        </div>
                     </div>
-                </div>
-
-            </nav>
-
-            <section id="message-section" :class="empty == true ? 'empty' : 'filled-message'">
-                <div id="message-nav" :style="{display: empty ? 'none' : 'flex'}">
-                    <div id="message-contact">
-                        <img :src="contacts[activeMessage].avatar" alt="contact image" class="contact-image">
-                        <div id="message-name">{{contacts[activeMessage].name}}<br><span>Ultimo accesso oggi alle 12:00</span></div>
+                    <div id="message-body" :style="{display: empty ? 'none' : 'flex'}">
+                        <ul id="message-list">
+                            <li v-for="item in contacts[activeMessage].messages" class="single-message" :class="item.status == 'sent' ? 'message-sent' : ''">{{item.message}}<span class="message-time">{{item.date.substring(11,16)}}</span></li>
+                        </ul>
                     </div>
-                    <div id="message-icons">
-                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        <a href="#"><i class="fa-solid fa-paperclip"></i></a>
-                        <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                    <div id="message-bar" :style="{display: empty ? 'none' : 'flex'}">
+                        <a href="#"><i class="fa-regular fa-face-smile"></i></a>
+                        <input type="text" class="message-input" placeholder="Scrivi un messaggio" v-model="newMessage">
+                        <a href="#"><i class="fa-solid fa-microphone"></i></a>
+                        
                     </div>
-                </div>
-                <div id="message-body" :style="{display: empty ? 'none' : 'flex'}">
-                    <ul id="message-list">
-                        <li v-for="item in contacts[activeMessage].messages" class="single-message" :class="item.status == 'sent' ? 'message-sent' : ''">{{item.message}}</li>
-                    </ul>
-                </div>
-                <div id="message-bar" :style="{display: empty ? 'none' : 'flex'}">
-                    <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-                    <input type="text" class="message-input" placeholder="Scrivi un messaggio">
-                    <a href="#"><i class="fa-solid fa-microphone"></i></a>
-                    
-                </div>
-            </section>
+                </section>
+    
+    
+    
+            </div>
+    
+        </main>
 
-
-
-        </div>
-
-    </main>
+    </div>
 
 
 

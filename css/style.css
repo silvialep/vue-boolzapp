@@ -22,30 +22,29 @@ main {
 
 .container {
     position: fixed;
+    display: flex;
+    flex-flow: row nowrap;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 1200px;
     height: 750px;
     background-color: rgb(243, 238, 234);
+    border: 1px solid rgb(228, 230, 227);
 }
 
 
 #side-bar {
-    position: absolute;
-    left: 0;
     width: 400px;
     height: 100%;
     background-color: white;
-    border-right: 2px solid rgb(214, 214, 214);
 }
 
 #message-section {
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: relative;
     width: calc(100% - 400px);
     height: 100%;
+    border-left: 2px solid rgb(214, 214, 214);
 }
 
 .empty {
@@ -196,6 +195,7 @@ main {
 }
 
 .active {
+    border: none;
     background-color: rgb(233, 235, 235);
 }
 
@@ -271,6 +271,7 @@ main {
 }
 
 .single-message {
+    position: relative;
     display: flex;
     align-items: center;
     width: 300px;
@@ -283,6 +284,14 @@ main {
 .message-sent {
     align-self: flex-end;
     background-color: rgb(213, 249, 186);
+}
+
+.message-time {
+    position: absolute;
+    bottom: 10%;
+    right: 3%;
+    font-size: 0.6rem;
+    color: rgb(191, 200, 216);
 }
 
 
@@ -312,4 +321,6 @@ main {
     flex-grow: 1;
     padding: 10px;
     font-size: 0.8rem;
+    border: none;
+    border-radius: 5px;
 }

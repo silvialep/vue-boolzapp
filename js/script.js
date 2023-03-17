@@ -175,6 +175,7 @@ createApp({
 
             empty: true,
             activeMessage: 0,
+            newMessage: '',
             
         }
     },
@@ -186,12 +187,18 @@ createApp({
         },
 
 
+        addMessage() {
+
+        }
+
         // mouseOver() {
         //     this.active = !this.active;
         //     console.log(this.active);
         // }
         
     },
+
+    
 
     mounted() {
         this.prova();
