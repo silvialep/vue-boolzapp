@@ -176,6 +176,7 @@ createApp({
             empty: true,
             activeMessage: 0,
             newMessage: '',
+            newText: '',
             
         }
     },
@@ -185,10 +186,22 @@ createApp({
         prova() {
             console.log(this.contacts);
         },
+        
+        
+        addItem(index) {
+            this.newMessage = this.newText;
+            console.log(this.newMessage);
+            this.newText = '';
+            this.contacts[index].messages.push({date: '', message: this.newMessage, status: 'sent'});
+            setTimeout(() => {
+                this.contacts[index].messages.push({ date: '', message: 'Ok', status: 'received' });
+            }, 3000);
 
+        },
 
-        addMessage() {
-
+        openMessage(index) {
+            this.activeMessage = index;
+            this.empty = false;
         }
 
         // mouseOver() {

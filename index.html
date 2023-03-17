@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div id="user-contacts">
-                        <div id="user-contacts-messages" v-for="(contact, index) in contacts" @click="activeMessage = index, empty = false" :class="activeMessage == index ? 'active' : ''">
+                        <div id="user-contacts-messages" v-for="(contact, index) in contacts" @click="openMessage(index)" :class="activeMessage == index ? 'active' : ''">
                             <img :src="contacts[index].avatar" alt="contact image" class="contact-image">
                             <div id="contact-name">{{contacts[index].name}}<br><span>Ultimo messaggio inviato</span></div>
                             <div id="contact-last-message">12:00</div>
@@ -75,7 +75,7 @@
                     </div>
                     <div id="message-bar" :style="{display: empty ? 'none' : 'flex'}">
                         <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-                        <input type="text" class="message-input" placeholder="Scrivi un messaggio" v-model="newMessage">
+                        <input type="text" class="message-input" placeholder="Scrivi un messaggio" v-model="newText" @keyup.enter="addItem(activeMessage)">
                         <a href="#"><i class="fa-solid fa-microphone"></i></a>
                         
                     </div>
