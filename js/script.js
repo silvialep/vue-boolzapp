@@ -173,10 +173,12 @@ createApp({
                 visible: true
             },
 
+            noView: true,
             empty: true,
-            activeMessage: 0,
+            activeMessage: null,
             newMessage: '',
             newText: '',
+            newSearch: '',
             
         }
     },
@@ -190,7 +192,6 @@ createApp({
         
         addItem(index) {
             this.newMessage = this.newText;
-            console.log(this.newMessage);
             this.newText = '';
             this.contacts[index].messages.push({date: '', message: this.newMessage, status: 'sent'});
             setTimeout(() => {
@@ -202,12 +203,22 @@ createApp({
         openMessage(index) {
             this.activeMessage = index;
             this.empty = false;
-        }
+        },
+
+
+        contactsNoView() {
+            this.noView = !this.noView;
+        },
+
+        searchUser() {
+
+        },
+
 
         // mouseOver() {
         //     this.active = !this.active;
         //     console.log(this.active);
-        // }
+        // },
         
     },
 
