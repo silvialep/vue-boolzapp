@@ -167,16 +167,15 @@ createApp({
                 }
             ],
 
+
             currentUser: {
                 name: 'Silvia',
                 avatar: './img/admin.png',
                 visible: true
             },
 
-            noView: true,
             empty: true,
             activeMessage: null,
-            newMessage: '',
             newText: '',
             newSearch: '',
             
@@ -191,11 +190,11 @@ createApp({
         
         
         addItem(index) {
-            this.newMessage = this.newText;
+            const newMessage = this.newText;
             this.newText = '';
-            this.contacts[index].messages.push({date: '', message: this.newMessage, status: 'sent'});
+            this.contacts[index].messages.push({date: '', message: newMessage, status: 'sent'});
             setTimeout(() => {
-                this.contacts[index].messages.push({ date: '', message: 'Ok', status: 'received' });
+                const reply = this.contacts[index].messages.push({ date: '', message: 'Ok', status: 'received' });
             }, 3000);
 
         },
@@ -207,11 +206,27 @@ createApp({
 
 
         contactsNoView() {
-            this.noView = !this.noView;
+            this.contacts.forEach(contact => {
+                contact.visible = false;
+            })
+        },
+        
+        
+        resetSearch() {
+            this.contacts.forEach(contact => {
+                contact.visible = true;
+            })
+            this.newSearch = '';
         },
 
         searchUser() {
-
+            this.contacts.forEach(contact => {
+                if (contact.name.toLowerCase().includes(this.newSearch.toLowerCase())) {
+                    contact.visible = true;
+                } else {
+                    contact.visible = false;
+                }
+            });
         },
 
 

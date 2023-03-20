@@ -43,12 +43,12 @@
                     <div id="nav-search-bar-cont">
                         <div id="search-bar">
                             <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                            <input @click="contactsNoView()" type="text" placeholder="Cerca o inizia una nuova chat" v-model="newSearch">
-                            <a href="#"><i v-if="noView == false" @click="contactsNoView()" class="fa-solid fa-xmark"></i></a>
+                            <input @click="contactsNoView()" @keyup="searchUser()" type="text" placeholder="Cerca o inizia una nuova chat" v-model="newSearch">
+                            <a href="#"><i @click="resetSearch()" class="fa-solid fa-xmark"></i></a>
                         </div>
                     </div>
                     <div id="user-contacts">
-                        <div id="user-contacts-messages" v-show="noView" v-for="(contact, index) in contacts" @click="openMessage(index)" :class="activeMessage == index ? 'active' : ''">
+                        <div class="user-contacts-messages" v-show="contact.visible == true" v-for="(contact, index) in contacts" @click="openMessage(index)" :class="activeMessage == index ? 'active' : ''">
                             <img :src="contacts[index].avatar" alt="contact image" class="contact-image">
                             <div id="contact-name">{{contacts[index].name}}<br><span>Ultimo messaggio inviato</span></div>
                             <div id="contact-last-message">12:00</div>

@@ -128,6 +128,7 @@ main {
 #nav-search-bar-cont {
     display: flex;
     align-items: center;
+    flex-flow: column nowrap;
     height: 40px;
     background-color: rgb(250, 250, 250);
     padding: 5px;
@@ -156,7 +157,7 @@ main {
 }
 
 
-#user-contacts-messages {
+.user-contacts-messages {
     display: flex;
     gap: 10px;
     width: 400px;
@@ -165,7 +166,7 @@ main {
 }
 
 /* per ora l'hover lo gestisco così ma vorrei riuscire a farlo in vue */
-#user-contacts-messages:hover {
+.user-contacts-messages:hover {
     background-color: rgb(245, 246, 246);
     cursor:pointer;
 }
