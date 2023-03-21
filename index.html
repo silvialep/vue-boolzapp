@@ -50,8 +50,8 @@
                     <div id="user-contacts">
                         <div class="user-contacts-messages" v-show="contact.visible == true" v-for="(contact, index) in contacts" @click="openMessage(index)" :class="activeMessage == index ? 'active' : ''">
                             <img :src="contacts[index].avatar" alt="contact image" class="contact-image">
-                            <div id="contact-name">{{contacts[index].name}}<br><span>Ultimo messaggio inviato</span></div>
-                            <div id="contact-last-message">12:00</div>
+                            <div id="contact-name">{{contacts[index].name}}<br><span>{{contacts[index].messages[(contacts[index].messages.length - 1)].message}}</span></div>
+                            <div id="contact-last-message">{{contacts[index].messages[(contacts[index].messages.length - 1)].date.substring(11,16)}}</div>
                         </div>
                     </div>
     
@@ -61,7 +61,7 @@
                     <div id="message-nav" v-if="!empty">
                         <div id="message-contact">
                             <img :src="contacts[activeMessage].avatar" alt="contact image" class="contact-image">
-                            <div id="message-name">{{contacts[activeMessage].name}}<br><span>Ultimo accesso oggi alle 12:00</span></div>
+                            <div id="message-name">{{contacts[activeMessage].name}}<br><span>Ultimo accesso oggi alle {{contacts[activeMessage].messages[(contacts[activeMessage].messages.length - 1)].date.substring(11,16)}}</span></div>
                         </div>
                         <div id="message-icons">
                             <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -71,14 +71,21 @@
                     </div>
                     <div id="message-body" v-if="!empty">
                         <ul id="message-list">
-                            <li v-for="item in contacts[activeMessage].messages" class="single-message" :class="item.status == 'sent' ? 'message-sent' : ''">{{item.message}}<span class="message-time">{{item.date.substring(11,16)}}</span></li>
+                            <li v-for="item in contacts[activeMessage].messages" class="single-message" :class="item.status == 'sent' ? 'message-sent' : ''">{{item.message}}<a href="#"><i class="fa-solid fa-chevron-down"></i></a>
+                                <ul id="message-drop-down">
+                                    <li><a href="#">Message info</li></a>
+                                    <li><a @click="deleteMessage(activeMessage, item)" href="#">Delete message</li></a>
+                                </ul>
+                                <span class="message-time">{{item.date.substring(11,16)}}</span>
+                            </li>
+                            
                         </ul>
                     </div>
                     <div id="message-bar" v-if="!empty">
                         <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-                        <input type="text" class="message-input" placeholder="Scrivi un messaggio" v-model="newText" @keyup.enter="addItem(activeMessage)">
-                        <a href="#"><i class="fa-solid fa-microphone"></i></a>
-                        
+                        <input type="text" class="message-input" placeholder="Scrivi un messaggio" v-model="newText" @click="enterMessage()" @keyup.enter="addItem(activeMessage)">
+                        <a href="#"><i v-if="micOpen == true" class="fa-solid fa-microphone"></i></a>
+                        <!-- <a href="#"><i v-else="micOpen == false" class="fa-solid fa-location-arrow"></i></a> -->
                     </div>
                 </section>
     
@@ -91,7 +98,7 @@
     </div>
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
