@@ -190,7 +190,8 @@ createApp({
             autoReply: '',
             now: '',
             micOpen: true,
-            
+            currentTime: new Date(),
+            messageDate: '',
             
         }
     },
@@ -204,9 +205,9 @@ createApp({
         addItem(index) {
             if (this.newText != '') {
                 const newMessage = this.newText;
-                this.contacts[index].messages.push({ date: '', message: newMessage, status: 'sent'});
+                this.contacts[index].messages.push({ date: '/' + this.currentTime.getDate() + '/' + this.currentTime.getMonth() + '/' + this.currentTime.getFullYear() + ' ' + this.currentTime.getHours() + ':' + this.currentTime.getMinutes(), message: newMessage, status: 'sent'});
                 setTimeout(() => {
-                    autoReply = this.contacts[index].messages.push({ date: '', message: this.randomReplies[Math.floor(Math.random() * (this.randomReplies.length - 1))], status: 'received' });
+                    autoReply = this.contacts[index].messages.push({ date: '/' + this.currentTime.getDate() + '/' + this.currentTime.getMonth() + '/' + this.currentTime.getFullYear() + ' ' + this.currentTime.getHours() + ':' + this.currentTime.getMinutes(), message: this.randomReplies[Math.floor(Math.random() * (this.randomReplies.length - 1))], status: 'received' });
                 }, 3000);
                 this.newText = '';
             } else {
@@ -256,6 +257,11 @@ createApp({
         
     },
 
+    // mounted() {
+    //     console.log(this.currentTime);
+    //     console.log(this.messageDate = this.currentTime.getDate() + '/' + this.currentTime.getMonth() + '/' + this.currentTime.getFullYear() + ' ' + this.currentTime.getHours() + ':' + this.currentTime.getMinutes())
+    // }
+
 
     
     
@@ -272,7 +278,6 @@ createApp({
 Scrittura del messaggio:
 
 
-- inserire l'orario corretto nei messaggi (v. note Luxon)
 - sotto al nome del contatto nella parte in alto a destra, 
 cambiare l'indicazione dello stato: visualizzare il testo 
 "sta scrivendo..." nel timeout in cui il pc risponde, poi 
