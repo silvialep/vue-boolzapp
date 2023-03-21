@@ -165,12 +165,10 @@ main {
     border-bottom: 1px solid rgb(233, 237, 239);
 }
 
-/* per ora l'hover lo gestisco così ma vorrei riuscire a farlo in vue */
 .user-contacts-messages:hover {
     background-color: rgb(245, 246, 246);
     cursor:pointer;
 }
-
 
 .contact-image {
     border-radius: 50%;
@@ -199,7 +197,6 @@ main {
 }
 
 .active {
-    border: none;
     background-color: rgb(233, 235, 235);
 }
 

@@ -14,6 +14,7 @@
 </head>
 <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <div id="app">
         <header>
     
@@ -83,9 +84,9 @@
                     </div>
                     <div id="message-bar" v-if="!empty">
                         <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-                        <input type="text" class="message-input" placeholder="Scrivi un messaggio" v-model="newText" @click="enterMessage()" @keyup.enter="addItem(activeMessage)">
-                        <a href="#"><i v-if="micOpen == true" class="fa-solid fa-microphone"></i></a>
-                        <!-- <a href="#"><i v-else="micOpen == false" class="fa-solid fa-location-arrow"></i></a> -->
+                        <input type="text" class="message-input" placeholder="Scrivi un messaggio" v-model="newText" @keyup="micOpen = false" @keyup.enter="addItem(activeMessage), micOpen = true">
+                        <a v-if="micOpen == true" href="#"><i class="fa-solid fa-microphone"></i></a>
+                        <a v-if="micOpen == false" href="#" @click="addItem(activeMessage), micOpen = true"><i class="fa-solid fa-location-arrow"></i></a>
                     </div>
                 </section>
     
@@ -98,7 +99,6 @@
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
